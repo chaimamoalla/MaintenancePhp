@@ -16,7 +16,7 @@ if (isset($_GET['msg']) && isset($messages[$_GET['msg']])) {
 
 try {
     $produitModel = new ProduitModel();
-    $produits = $produitModel->findAllWithCategorie(); //bonjour yesmine 1233
+    $produits = $produitModel->findAllWithCategorie(); //bonjour yesmine 123345869
 } catch (PDOException $e) {
     $produits = [];
     $message  = ['danger', 'Impossible de charger les produits. Vérifiez la connexion à la base de données.'];
@@ -90,3 +90,4 @@ require 'layouts/header.php';
 </div>
 
 <?php require 'layouts/footer.php'; ?>
+// yesmine version 1 
