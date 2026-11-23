@@ -33,65 +33,23 @@ $produit    = ['code' => '', 'designation' => '', 'prix' => '', 'qte' => '', 'co
 
 
 try {
-    // 1. Création des modèles
     $produitModel = new ProduitModel();
     $categorieModel = new CategorieModel();
-
-    // Charger toutes les catégories
     $categories = $categorieModel->findAll();
 
-    // 2. Si le formulaire est envoyé
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // a. Récupérer les données
         $produit['code'] = $_POST['code'] ?? '';
         $produit['designation'] = trim($_POST['designation'] ?? '');
         $produit['prix'] = $_POST['prix'] ?? '';
         $produit['qte'] = $_POST['qte'] ?? '';
         $produit['code_categorie'] = $_POST['code_categorie'] ?? '';
 
-        // b. Validation
-        if ($produit['designation'] === '') {
-            $errors['designation'] = 'La désignation est obligatoire.';
-        } elseif (strlen($produit['designation']) > 250) {
-            $errors['designation'] = '250 caractères maximum.';
-        }
-
-        if (filter_var($produit['prix'], FILTER_VALIDATE_INT) === false
-            || $produit['prix'] < 0) {
-            $errors['prix'] = 'Le prix doit être un entier positif.';
-        }
-
-        if (filter_var($produit['qte'], FILTER_VALIDATE_INT) === false
-            || $produit['qte'] < 0) {
-            $errors['qte'] = 'La quantité doit être un entier positif.';
-        }
-
-        // Vérifier si la catégorie existe
-        $categorieExiste = false;
-
-        foreach ($categories as $c) {
-            if ((string)$c['code'] === (string)$produit['code_categorie']) {
-                $categorieExiste = true;
-                break;
-            }
-        }
-
-        if (!$categorieExiste) {
-            $errors['code_categorie'] = 'Veuillez choisir une catégorie valide.';
-        }
-
-        // c. Enregistrement si aucune erreur
-        if (empty($errors)) {
-            $produitModel->save($produit);
-
-            $msg = $produit['code'] !== '' ? 'modifie' : 'ajoute';
-
-            header("Location: produits.php?msg=$msg");
-            exit;
-        }
-
-    } 
+        $produitModel->save($produit);
+        $modification = $produit['code'] !== '';
+        redirect('produits.php?msg=' . ($produit['code'] !== '' ? 'modifie' : 'ajoute'));
+        
+    }
     // 3. Sinon, modification avec GET
     elseif (isset($_GET['code'])) {
 
@@ -107,6 +65,8 @@ try {
     header('Location: produits.php?msg=erreur');
     exit;
 }
+
+
 ///////////////////////////////
 
 

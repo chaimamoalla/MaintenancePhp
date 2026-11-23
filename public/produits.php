@@ -1,5 +1,4 @@
 <?php
-// Page "liste des produits"
 require '../app/init.php';
 
 $messages = [
