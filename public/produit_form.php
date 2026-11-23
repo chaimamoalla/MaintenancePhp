@@ -31,7 +31,7 @@ $produit    = ['code' => '', 'designation' => '', 'prix' => '', 'qte' => '', 'co
 //
 // 4. Entourer les étapes 1 à 3 d'un try / catch (PDOException)
 //    qui redirige vers produits.php?msg=erreur.
-
+//hi ccest yesmine
 
 try {
     // 1. Création des modèles

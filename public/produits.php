@@ -16,7 +16,7 @@ if (isset($_GET['msg']) && isset($messages[$_GET['msg']])) {
 
 try {
     $produitModel = new ProduitModel();
-    $produits = $produitModel->findAllWithCategorie();
+    $produits = $produitModel->findAllWithCategorie(); //bonjour yesmine 1233
 } catch (PDOException $e) {
     $produits = [];
     $message  = ['danger', 'Impossible de charger les produits. Vérifiez la connexion à la base de données.'];
