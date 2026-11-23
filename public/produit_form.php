@@ -5,6 +5,7 @@
 //   POST produit_form.php          -> validation puis enregistrement
 
 require '../app/init.php';
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 // Variables utilisées par le formulaire HTML ci-dessous
 $errors     = [];   // messages d'erreur, ex. $errors['prix'] = 'Le prix doit être un entier positif.';
