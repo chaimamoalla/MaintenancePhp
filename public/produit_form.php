@@ -6,7 +6,7 @@
 
 require '../app/init.php';
 //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
+//modif de chaima
 // Variables utilisées par le formulaire HTML ci-dessous
 $errors     = [];   // messages d'erreur, ex. $errors['prix'] = 'Le prix doit être un entier positif.';
 $categories = [];   // liste des catégories (pour la liste déroulante)
